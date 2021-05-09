@@ -69,7 +69,7 @@
         <dependency>
             <!-- 订单服务 -->
             <groupId>cn.iocoder.mall</groupId>
-            <artifactId>order-service-api</artifactId>
+            <artifactId>trade-service-api</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
         <dependency>
@@ -84,11 +84,23 @@
             <artifactId>system-service-api</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
+        <dependency>
+            <!-- 支付服务 -->
+            <groupId>cn.iocoder.mall</groupId>
+            <artifactId>pay-service-api</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
 
         <!-- Registry 和 Config 相关 -->
         <dependency>
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+        </dependency>
+
+        <!-- 监控相关 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
 
         <!-- 工具类相关 -->
@@ -108,4 +120,15 @@
 
     </dependencies>
 
+    <build>
+        <!-- 设置构建的 jar 包名 -->
+        <finalName>${project.artifactId}</finalName>
+        <!-- 使用 spring-boot-maven-plugin 插件打包 -->
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
 </project>

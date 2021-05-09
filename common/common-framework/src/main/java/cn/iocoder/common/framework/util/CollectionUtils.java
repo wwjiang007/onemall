@@ -34,6 +34,11 @@ public class CollectionUtils {
         return from.stream().collect(Collectors.toMap(keyFunc, valueFunc));
     }
 
+    public static <T, K> Map<K, List<T>> convertMultiMap(List<T> from, Function<T, K> keyFunc) {
+        return from.stream().collect(Collectors.groupingBy(keyFunc,
+                Collectors.mapping(t -> t, Collectors.toList())));
+    }
+
     public static <T, K, V> Map<K, List<V>> convertMultiMap(List<T> from, Function<T, K> keyFunc, Function<T, V> valueFunc) {
         return from.stream().collect(Collectors.groupingBy(keyFunc,
                 Collectors.mapping(valueFunc, Collectors.toList())));
@@ -46,6 +51,10 @@ public class CollectionUtils {
 
     public static boolean containsAny(Collection<?> source, Collection<?> candidates) {
         return org.springframework.util.CollectionUtils.containsAny(source, candidates);
+    }
+
+    public static <T> T getFirst(List<T> from) {
+        return !isEmpty(from) ? from.get(0) : null;
     }
 
 }
